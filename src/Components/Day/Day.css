@@ -1,0 +1,5 @@
+.Day {
+    grid-area: top;
+    width: fit-content;
+}
+

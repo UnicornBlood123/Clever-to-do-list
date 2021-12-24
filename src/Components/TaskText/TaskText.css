@@ -1,0 +1,11 @@
+.TaskText{
+    display: flex;
+    flex-flow: row wrap;
+    gap:10px;
+}
+
+.TaskText textarea{
+    font-size: 24px;
+    resize: none;
+    outline: none;
+}

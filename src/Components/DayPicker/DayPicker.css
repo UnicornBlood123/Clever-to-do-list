@@ -1,0 +1,7 @@
+.DayPicker{
+    grid-area: dayPicker;
+    margin-left: 50px;
+    margin-right: 50px;
+    overflow-x: auto;
+    display: flex;
+}

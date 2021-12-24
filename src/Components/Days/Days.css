@@ -1,0 +1,6 @@
+.Days{
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+    gap: 20px;
+}

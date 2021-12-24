@@ -1,0 +1,15 @@
+.Tassker{
+    grid-area: content;
+    display: grid;
+    grid-template-rows:0.7fr 1fr 3fr 0.7fr;
+    grid-template-areas: 'header' 'dayPicker' 'taskList' 'footer';
+    font-size:30px;
+    background-color: white;
+    height: 870px;
+    width: 562px;
+    align-self: center;
+    justify-self: center;
+    border-radius: 5px;
+    border: solid 1px rgba(0,0,0,0.33);
+}
+
