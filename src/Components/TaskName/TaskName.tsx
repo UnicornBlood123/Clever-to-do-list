@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 import './TaskName.css';
 import {useParams} from "react-router-dom";
 
-function useInputValue(defaultValue='') {
+function useInputName(defaultValue='') {
     const [value, setValue] = useState(defaultValue);
 
     return{
@@ -14,18 +14,32 @@ function useInputValue(defaultValue='') {
     }
 }
 
-function TaskName({tasks, update}: any) {
+function useInputCheck(defaultValue:boolean=false) {
+    const [check, setCheck] = useState<boolean>(defaultValue);
+
+    return {
+        bind: {
+            checked: check,
+            onChange: (event: any) => setCheck(event.target.checked)
+        },
+        value: () => check
+    }
+}
+
+function TaskName({tasks, updateName, updateCheck}: any) {
     const params = useParams();
     const taskNumber = params?.id + '';
-    const input = useInputValue(tasks?.[+taskNumber - 1]?.name);
-
+    const inputName = useInputName(tasks?.[+taskNumber - 1]?.name);
+    const inputCheck = useInputCheck(tasks?.[+taskNumber - 1]?.done);
     React.useEffect(() => {
-        update(input.value())
+        updateName(inputName.value())
+        updateCheck(inputCheck.value())
     });
 
     return (
         <div className="TaskName">
-            <textarea placeholder="name" cols={33} rows={1} {...input.bind}/>
+            <input type="checkbox" {...inputCheck.bind}/>
+            <textarea placeholder="name" cols={31} rows={1} {...inputName.bind}/>
         </div>
     );
 

@@ -5,7 +5,7 @@ import {NavLink} from "react-router-dom";
 function Task({name,id}: { name: string,id:string}) {
     return (
         <div className="Task">
-            <NavLink to={'/task/'+id}><p>{name}</p></NavLink>
+            <NavLink className="InActive" to={'/task/'+id}><p>{name}</p></NavLink>
         </div>
     );
 }

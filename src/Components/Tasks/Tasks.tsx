@@ -8,7 +8,6 @@ function useInputValue(defaultValue:boolean[] = []) {
 
     return {
         bind: {
-            check,
             onChange: (event: any) => {
                 setCheck((current: boolean[]) => {
                     return [...current.slice(0, +event.target.id), event.target.checked, ...current.slice(+event.target.id + 1, current.length + 1)]

@@ -5,7 +5,7 @@ import {Route, Routes, Navigate} from "react-router-dom";
 import TaskName from "../TaskName/TaskName";
 import Loader from "../Loader/Loader";
 
-function DayPicker({tasks,loading,update}:any) {
+function DayPicker({tasks,loading,updateName,updateCheck}:any) {
     if (loading) {
         return (
             <div className="DayPicker">
@@ -19,7 +19,7 @@ function DayPicker({tasks,loading,update}:any) {
                 <Routes>
                     <Route index element={<Days/>}/>
                     <Route path="day/:id" element={<Days/>}/>
-                    <Route path="task/:id" element={<TaskName tasks={tasks} update={update}/>}/>
+                    <Route path="task/:id" element={<TaskName tasks={tasks} updateName={updateName} updateCheck={updateCheck}/>}/>
                     <Route path="*" element={<Navigate to={'/'}/>}/>
                 </Routes>
             </div>

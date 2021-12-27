@@ -1,4 +1,9 @@
 .TaskName{
+    display: flex;
+    justify-items: flex-start;
+    align-items: center;
+    gap: 10px;
+    margin-top: 15px;
     align-self: center;
 }
 
@@ -6,4 +11,10 @@
     font-size: 24px;
     resize: none;
     outline: none;
+}
+
+.TaskName input[type="checkbox"]{
+    width:18px;
+    height:18px;
+    cursor:pointer;
 }

@@ -1,3 +1,8 @@
 .Task{
     width: fit-content;
 }
+.InActive{
+    color: black;
+    text-decoration: none;
+}
+

@@ -17,7 +17,7 @@ function Tassker() {
     const navigate = useNavigate();
     const {firestore} = useContext<any>(Context);
     const [tasks, loading] = useCollectionData(firestore.collection('tasks'));
-    const updateData = {name:'',text:''}
+    const updateData = {name:'',text:'',done:false}
 
     function updateText(text:string) {
        updateData.text=text;
@@ -25,7 +25,12 @@ function Tassker() {
     function updateName(name:string) {
         updateData.name=name;
     }
-    function updateCheck(done:[],day:string) {
+
+    function updateCheck(done:boolean) {
+        updateData.done=done;
+    }
+
+    function updateChecks(done:[],day:string) {
         if(done.length) {
             return (firestore.collection('tasks').get().then((snapshot: any) => {
                 return Promise.all(snapshot.docs?.map((doc: any, i: number) => {
@@ -38,7 +43,7 @@ function Tassker() {
         }
     }
     function updateAll(i:number){
-        firestore.collection('tasks').doc(i.toString()).update({text: updateData?.text, name: updateData?.name})
+        firestore.collection('tasks').doc(i.toString()).update({text: updateData?.text, name: updateData?.name, done: updateData?.done})
     }
 
     function add(i:number,day:number) {
@@ -61,8 +66,8 @@ function Tassker() {
         return (
             <div className="Tassker">
                 <Header />
-                <DayPicker tasks={tasks} loading={loading} update={updateName}/>
-                <TaskList tasks={tasks} loading={loading} updateText={updateText} updateCheck={updateCheck}/>
+                <DayPicker tasks={tasks} loading={loading} updateName={updateName}  updateCheck={updateCheck}/>
+                <TaskList tasks={tasks} loading={loading} updateText={updateText} updateCheck={updateChecks}/>
                 <Footer tasks={tasks} update={updateAll} add={add}/>
             </div>);
     } else {

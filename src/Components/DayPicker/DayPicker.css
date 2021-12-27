@@ -4,4 +4,21 @@
     margin-right: 50px;
     overflow-x: auto;
     display: flex;
+    margin-bottom: 15px;
+}
+
+.DayPicker::-webkit-scrollbar {
+    width: 10px;
+    background-color: white;
+}
+
+.DayPicker::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    background-color: lightgray;
+}
+
+.DayPicker::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.2);
+    border-radius: 10px;
+    background-color: white;
 }
