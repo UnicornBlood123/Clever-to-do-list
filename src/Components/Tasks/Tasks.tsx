@@ -3,26 +3,37 @@ import './Tasks.css';
 import Task from "../Task/Task";
 import {useParams} from "react-router-dom";
 
+function useInputValue(defaultValue:boolean[] = []) {
+    const [check, setCheck] = useState<boolean[]>(defaultValue);
+
+    return {
+        bind: {
+            check,
+            onChange: (event: any) => {
+                setCheck((current: boolean[]) => {
+                    return [...current.slice(0, +event.target.id), event.target.checked, ...current.slice(+event.target.id + 1, current.length + 1)]
+                })
+            }
+        },
+        value: (i:number) => check[i],
+        values: () => check
+    }
+}
 
 function Tasks({tasks, update}: any) {
     const paramsId = useParams().id;
-    const [value, setValue] = useState<boolean[]>(tasks.map((task:any)=>task.done));
+    const input = useInputValue(tasks.map((task:any)=>task.done));
     const data:any = [];
 
     React.useEffect(() => {
-        update(value, paramsId)
+        update(input.values(), paramsId)
     });
 
     tasks?.forEach((task: any, i: number) => {
         if (task.day === paramsId) {
             data.push(
                 <div key={task.id} className="TaskLine">
-                    <input type="checkbox" id={i.toString()} checked={value[i]} onChange={e => {
-                        setValue(
-                            (current: boolean[]) => {
-                                return [...current.slice(0, i), e.target.checked, ...current.slice(i + 1, current.length + 1)]
-                            })
-                    }}/>
+                    <input type="checkbox" id={i.toString()} checked={input.value(i)} {...input.bind}/>
                     {<Task id={task.id} name={task.name}/>}
                 </div>
             )
@@ -34,9 +45,10 @@ function Tasks({tasks, update}: any) {
             {data}
         </div>
     );
-
 }
 
 
 export default Tasks;
+
+
 
