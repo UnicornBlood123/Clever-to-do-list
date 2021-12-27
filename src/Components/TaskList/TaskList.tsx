@@ -17,7 +17,7 @@ function TaskList({tasks, loading, updateText, updateCheck}: any) {
         return (
             <div className="TaskList">
                 <Routes>
-                    <Route index element={<Tasks tasks={tasks} update={updateText}/>}/>
+                    <Route index element={<div>Choose a day</div>}/>
                     <Route path="day/:id" element={<Tasks tasks={tasks} update={updateCheck}/>}/>
                     <Route path='task/:id' element={<TaskText tasks={tasks} update={updateText}/>}/>
                     <Route path="*" element={<Navigate to={'/'}/>}/>

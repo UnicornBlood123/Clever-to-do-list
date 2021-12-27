@@ -4,10 +4,10 @@ import Task from "../Task/Task";
 import {useParams} from "react-router-dom";
 
 
-function Tasks({tasks, update, first}: any) {
+function Tasks({tasks, update}: any) {
     const paramsId = useParams().id;
     const [value, setValue] = useState<boolean[]>(tasks.map((task:any)=>task.done));
-    const data: any = [];
+    const data:any = [];
 
     React.useEffect(() => {
         update(value, paramsId)
