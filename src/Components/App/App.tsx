@@ -10,7 +10,7 @@ import Loader from "../Loader/Loader";
 
 function App() {
     const {auth} = useContext<any>(Context);
-    const [user, loading, error] = useAuthState(auth);
+    const loading = useAuthState(auth)[1];
 
     if (loading) {
         return (

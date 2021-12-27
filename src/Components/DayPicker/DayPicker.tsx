@@ -3,7 +3,6 @@ import Days from '../Days/Days';
 import './DayPicker.css';
 import {Route, Routes, Navigate} from "react-router-dom";
 import TaskName from "../TaskName/TaskName";
-import TaskList from "../TaskList/TaskList";
 
 function DayPicker({tasks,loading,update}:any) {
     return (

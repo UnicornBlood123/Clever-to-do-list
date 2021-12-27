@@ -11,7 +11,7 @@ function TaskText({tasks,loading,update}:any) {
 
     React.useEffect(() => {
         update(value)
-    }, [value]);
+    });
 
     if (loading) {
         return (
