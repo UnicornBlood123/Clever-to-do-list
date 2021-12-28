@@ -3,7 +3,7 @@ import './Days.css';
 import Day from "../Day/Day";
 import {getDays} from "../../api/loader"
 
-function Days() {
+const Days = () =>  {
     const [data, setData] = useState<[]>([]);
     React.useEffect(() => {
         getDays().then(result => setData(result as []));

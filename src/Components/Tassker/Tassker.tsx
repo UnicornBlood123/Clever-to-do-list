@@ -11,7 +11,7 @@ import {useAuthState} from "react-firebase-hooks/auth";
 import {useCollectionData} from "react-firebase-hooks/firestore";
 
 
-function Tassker() {
+const Tassker = () =>  {
     const {auth} = useContext<any>(Context);
     const [user] = useAuthState(auth);
     const navigate = useNavigate();
@@ -19,18 +19,18 @@ function Tassker() {
     const [tasks, loading] = useCollectionData(firestore.collection('tasks'));
     const updateData = {name:'',text:'',done:false}
 
-    function updateText(text:string) {
+    const updateText = (text:string) => {
        updateData.text=text;
     }
-    function updateName(name:string) {
+    const updateName = (name:string) =>  {
         updateData.name=name;
     }
 
-    function updateCheck(done:boolean) {
+    const updateCheck = (done:boolean) =>  {
         updateData.done=done;
     }
 
-    function updateChecks(done:[],day:string) {
+    const updateChecks = (done:[],day:string) =>  {
         if(done.length) {
             return (firestore.collection('tasks').get().then((snapshot: any) => {
                 return Promise.all(snapshot.docs?.map((doc: any, i: number) => {
@@ -42,11 +42,11 @@ function Tassker() {
             }));
         }
     }
-    function updateAll(i:number){
+    const updateAll = (i:number) =>  {
         firestore.collection('tasks').doc(i.toString()).update({text: updateData?.text, name: updateData?.name, done: updateData?.done})
     }
 
-    function add(i:number,day:number) {
+    const addTask = (i:number,day:number) =>  {
         firestore.collection('tasks').doc(i.toString()).set({
             id: i,
             done: false,
@@ -68,7 +68,7 @@ function Tassker() {
                 <Header />
                 <DayPicker tasks={tasks} loading={loading} updateName={updateName}  updateCheck={updateCheck}/>
                 <TaskList tasks={tasks} loading={loading} updateText={updateText} updateCheck={updateChecks}/>
-                <Footer tasks={tasks} update={updateAll} add={add}/>
+                <Footer tasks={tasks} update={updateAll} add={addTask}/>
             </div>);
     } else {
         return (

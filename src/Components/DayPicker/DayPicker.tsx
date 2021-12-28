@@ -5,7 +5,7 @@ import {Route, Routes, Navigate} from "react-router-dom";
 import TaskName from "../TaskName/TaskName";
 import Loader from "../Loader/Loader";
 
-function DayPicker({tasks,loading,updateName,updateCheck}:any) {
+const DayPicker = ({tasks,loading,updateName,updateCheck}:any) =>  {
     if (loading) {
         return (
             <div className="DayPicker">

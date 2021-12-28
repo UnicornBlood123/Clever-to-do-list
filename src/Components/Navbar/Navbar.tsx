@@ -3,8 +3,7 @@ import './Navbar.css';
 import {Context} from "../../index";
 import {useAuthState} from "react-firebase-hooks/auth";
 
-function Navbar() {
-
+const Navbar = () =>  {
     const {auth} = useContext<any>(Context);
     const [user] = useAuthState(auth);
 

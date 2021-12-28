@@ -6,7 +6,7 @@ import TaskText from '../TaskText/TaskText';
 import Loader from "../Loader/Loader";
 
 
-function TaskList({tasks, loading, updateText, updateCheck}: any) {
+const TaskList = ({tasks, loading, updateText, updateCheck}: any) =>  {
     if (loading) {
         return (
             <div className="TaskList">

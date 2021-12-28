@@ -2,10 +2,10 @@ import React from 'react';
 import './Header.css';
 import {Route, Routes, Navigate, useNavigate} from "react-router-dom";
 
-function Header() {
+const Header = () =>  {
     const navigate = useNavigate();
 
-    function back() {
+    const back = () =>  {
         navigate(-1);
     }
 

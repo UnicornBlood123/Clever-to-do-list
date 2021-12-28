@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 import './TaskName.css';
 import {useParams} from "react-router-dom";
 
-function useInputName(defaultValue='') {
+const useInputName = (defaultValue='') =>  {
     const [value, setValue] = useState(defaultValue);
 
     return{
@@ -14,7 +14,7 @@ function useInputName(defaultValue='') {
     }
 }
 
-function useInputCheck(defaultValue:boolean=false) {
+const useInputCheck = (defaultValue:boolean=false) =>  {
     const [check, setCheck] = useState<boolean>(defaultValue);
 
     return {
@@ -26,7 +26,7 @@ function useInputCheck(defaultValue:boolean=false) {
     }
 }
 
-function TaskName({tasks, updateName, updateCheck}: any) {
+const TaskName = ({tasks, updateName, updateCheck}: any) =>  {
     const params = useParams();
     const taskNumber = params?.id + '';
     const inputName = useInputName(tasks?.[+taskNumber - 1]?.name);

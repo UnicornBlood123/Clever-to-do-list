@@ -2,7 +2,7 @@ import React from 'react';
 import './Loader.css';
 
 
-function Loader() {
+const Loader = () =>  {
     return (
         <div className="Loader lds-hourglass"/>
     );

@@ -3,7 +3,7 @@ import './Login.css';
 import {Context} from "../../index";
 import firebase from "firebase/compat/app";
 
-function Login() {
+const Login = () => {
     const {auth} = useContext<any>(Context);
 
     const login = async () => {

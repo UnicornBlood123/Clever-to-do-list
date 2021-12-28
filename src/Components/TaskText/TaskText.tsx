@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 import './TaskText.css';
 import {useParams} from "react-router-dom";
 
-function useInputValue(defaultValue='') {
+const useInputValue = (defaultValue='') =>  {
     const [value, setValue] = useState(defaultValue);
 
     return{
@@ -14,7 +14,7 @@ function useInputValue(defaultValue='') {
     }
 }
 
-function TaskText({tasks, update}: any) {
+const TaskText = ({tasks, update}: any) =>  {
     const params = useParams();
     const taskNumber = params?.id + '';
     const input = useInputValue(tasks?.[+taskNumber - 1]?.text)
