@@ -1,9 +1,9 @@
-import React, {useRef, useState} from 'react';
+import React, {useState} from 'react';
 import './Tasks.css';
 import Task from "../Task/Task";
 import {useParams} from "react-router-dom";
 
-const useInputValue = (defaultValue:boolean[] = []) =>  {
+const useInputValue = (defaultValue: boolean[] = []) => {
     const [check, setCheck] = useState<boolean[]>(defaultValue);
 
     return {
@@ -14,47 +14,37 @@ const useInputValue = (defaultValue:boolean[] = []) =>  {
                 })
             }
         },
-        value: (i:number) => check[i],
+        value: (i: number) => check[i],
         values: () => check
     }
 }
 
-const Tasks = ({tasks, update}: any) =>  {
+const Tasks = ({tasks, currentDayTasks, update}: any) => {
     const paramsId = useParams().id;
-    const input = useInputValue(tasks.map((task:any)=>task.done));
-    const count = useRef(0);
+    const input = useInputValue(tasks.map((task: any) => task.done));
 
     React.useEffect(() => {
         update(input.values(), paramsId)
     });
 
-    React.useEffect(() => {
-       count.current=0
-    },[paramsId,input]);
-
-
     return (
         <div className="Tasks">
-        <div>{count.current} Tasks today</div>
+            <div>{currentDayTasks().length} Tasks today</div>
             {
                 tasks?.map((task: any, i: number) => {
-                    if (task.day === paramsId) {
-                        count.current++
+                    if(task?.day === paramsId) {
                         return (
-                            <div key={task.id} className="TaskLine">
+                            <div key={i} className="TaskLine">
                                 <input type="checkbox" id={i.toString()} checked={input.value(i)} {...input.bind}/>
                                 {<Task id={task.id} name={task.name}/>}
                             </div>
                         );
                     }
-                    else{
-                        return null
-                    }
+                    else return null
                 })
             }
         </div>
     );
-
 }
 
 export default Tasks;

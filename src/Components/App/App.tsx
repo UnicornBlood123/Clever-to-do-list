@@ -1,18 +1,24 @@
 import React, {useContext} from 'react';
 import './App.css';
 import Tassker from "../Tassker/Tassker";
-import {Route, Routes} from 'react-router-dom';
+import {Route, Routes, useNavigate} from 'react-router-dom';
 import Navbar from "../Navbar/Navbar";
 import {Context} from "../../index";
 import {useAuthState} from "react-firebase-hooks/auth";
 import Loader from "../Loader/Loader";
+import Login from "../Login/Login";
 
 
 const App = () =>  {
     const {auth} = useContext<any>(Context);
-    const loading = useAuthState(auth)[1];
+    const [user,setUser] = useAuthState(auth);
+    const navigate = useNavigate();
 
-    if (loading) {
+    React.useEffect(() => {
+        !setUser && !user && navigate('login')
+    }, [user,navigate,setUser]);
+
+    if (setUser) {
         return (
             <div className="App">
                 <Loader/>
@@ -24,6 +30,7 @@ const App = () =>  {
                 <Navbar/>
                 <Routes>
                     <Route path={'/*'} element={<Tassker/>}/>
+                    <Route path={'login'} element={<Login/>}/>
                 </Routes>
             </div>
         );

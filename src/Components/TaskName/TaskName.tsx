@@ -2,25 +2,31 @@ import React, {useState} from 'react';
 import './TaskName.css';
 import {useParams} from "react-router-dom";
 
-const useInputName = (defaultValue='') =>  {
+const useInputName = (updateName:any,defaultValue='') =>  {
     const [value, setValue] = useState(defaultValue);
 
     return{
         bind:{
             value,
-            onChange: (event:any) => setValue(event.target.value)
+            onChange: (event:any) => {
+                setValue(event.target.value)
+                updateName(event.target.value)
+            }
         },
         value: () => value
     }
 }
 
-const useInputCheck = (defaultValue:boolean=false) =>  {
+const useInputCheck = (updateCheck:any,defaultValue:boolean=false) =>  {
     const [check, setCheck] = useState<boolean>(defaultValue);
 
     return {
         bind: {
             checked: check,
-            onChange: (event: any) => setCheck(event.target.checked)
+            onChange: (event: any) => {
+                setCheck(event.target.checked)
+                updateCheck(event.target.checked)
+            }
         },
         value: () => check
     }
@@ -29,12 +35,13 @@ const useInputCheck = (defaultValue:boolean=false) =>  {
 const TaskName = ({tasks, updateName, updateCheck}: any) =>  {
     const params = useParams();
     const taskNumber = params?.id + '';
-    const inputName = useInputName(tasks?.[+taskNumber - 1]?.name);
-    const inputCheck = useInputCheck(tasks?.[+taskNumber - 1]?.done);
+    const inputName = useInputName(updateName,tasks?.[+taskNumber - 1]?.name);
+    const inputCheck = useInputCheck(updateCheck,tasks?.[+taskNumber - 1]?.done);
+
     React.useEffect(() => {
-        updateName(inputName.value())
-        updateCheck(inputCheck.value())
-    });
+        updateName(updateName,tasks?.[+taskNumber - 1]?.name)
+        updateCheck(updateCheck,tasks?.[+taskNumber - 1]?.done)
+    },[updateName,updateCheck,tasks,taskNumber]);
 
     return (
         <div className="TaskName">
