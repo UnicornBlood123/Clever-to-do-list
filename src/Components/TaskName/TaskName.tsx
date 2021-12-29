@@ -1,55 +1,54 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 import './TaskName.css';
-import {useParams} from "react-router-dom";
+import { useParams } from 'react-router-dom';
 
-const useInputName = (updateName:any,defaultValue='') =>  {
-    const [value, setValue] = useState(defaultValue);
+const useInputName = (updateName: any, defaultValue = '') => {
+  const [value, setValue] = useState(defaultValue);
 
-    return{
-        bind:{
-            value,
-            onChange: (event:any) => {
-                setValue(event.target.value)
-                updateName(event.target.value)
-            }
-        },
-        value: () => value
-    }
-}
+  return {
+    bind: {
+      value,
+      onChange: (event: any) => {
+        setValue(event.target.value);
+        updateName(event.target.value);
+      },
+    },
+    value: () => value,
+  };
+};
 
-const useInputCheck = (updateCheck:any,defaultValue:boolean=false) =>  {
-    const [check, setCheck] = useState<boolean>(defaultValue);
+const useInputCheck = (updateCheck: any, defaultValue = false) => {
+  const [check, setCheck] = useState<boolean>(defaultValue);
 
-    return {
-        bind: {
-            checked: check,
-            onChange: (event: any) => {
-                setCheck(event.target.checked)
-                updateCheck(event.target.checked)
-            }
-        },
-        value: () => check
-    }
-}
+  return {
+    bind: {
+      checked: check,
+      onChange: (event: any) => {
+        setCheck(event.target.checked);
+        updateCheck(event.target.checked);
+      },
+    },
+    value: () => check,
+  };
+};
 
-const TaskName = ({tasks, updateName, updateCheck}: any) =>  {
-    const params = useParams();
-    const taskNumber = params?.id + '';
-    const inputName = useInputName(updateName,tasks?.[+taskNumber - 1]?.name);
-    const inputCheck = useInputCheck(updateCheck,tasks?.[+taskNumber - 1]?.done);
+const TaskName = ({ tasks, updateName, updateCheck }: any) => {
+  const params = useParams();
+  const taskNumber = params?.id + '';
+  const inputName = useInputName(updateName, tasks?.[+taskNumber - 1]?.name);
+  const inputCheck = useInputCheck(updateCheck, tasks?.[+taskNumber - 1]?.done);
 
-    React.useEffect(() => {
-        updateName(updateName,tasks?.[+taskNumber - 1]?.name)
-        updateCheck(updateCheck,tasks?.[+taskNumber - 1]?.done)
-    },[updateName,updateCheck,tasks,taskNumber]);
+  React.useEffect(() => {
+    updateCheck(inputCheck.value());
+    updateName(inputName.value());
+  }, []);
 
-    return (
-        <div className="TaskName">
-            <input type="checkbox" {...inputCheck.bind}/>
-            <textarea placeholder="name" cols={31} rows={1} {...inputName.bind}/>
-        </div>
-    );
-
-}
+  return (
+    <div className="TaskName">
+      <input type="checkbox" {...inputCheck.bind} />
+      <textarea placeholder="name" cols={23} rows={1} {...inputName.bind} />
+    </div>
+  );
+};
 
 export default TaskName;

@@ -5,15 +5,12 @@
     },
     "extends": [
         "plugin:@typescript-eslint/recommended",
-        "plugin:react-hooks/recommended",
         "plugin:react/recommended",
         "plugin:import/errors",
         "plugin:import/warnings",
         "plugin:import/typescript",
         "google",
-        "plugin:prettier/recommended",
-        "prettier",
-        "prettier/react"
+        "plugin:prettier/recommended"
     ],
     "parser": "@typescript-eslint/parser",
     "parserOptions": {
@@ -24,6 +21,7 @@
         "sourceType": "module"
     },
     "plugins": [
+        "react",
         "@typescript-eslint",
         "prettier"
     ],

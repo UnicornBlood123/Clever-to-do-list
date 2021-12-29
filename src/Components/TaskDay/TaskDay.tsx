@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
-import './TaskText.css';
+import './TaskDay.css';
 import { useParams } from 'react-router-dom';
 
-const useInputValue = (update: any, defaultValue = '') => {
+const useInput = (updateDay: any, defaultValue = '') => {
   const [value, setValue] = useState(defaultValue);
 
   return {
@@ -10,27 +10,27 @@ const useInputValue = (update: any, defaultValue = '') => {
       value,
       onChange: (event: any) => {
         setValue(event.target.value);
-        update(event.target.value);
+        updateDay(event.target.value);
       },
     },
     value: () => value,
   };
 };
 
-const TaskText = ({ tasks, update }: any) => {
+const TaskDay = ({ tasks, update }: any) => {
   const params = useParams();
   const taskNumber = params?.id + '';
-  const input = useInputValue(update, tasks?.[+taskNumber - 1]?.text);
+  const input = useInput(update, tasks?.[+taskNumber - 1]?.day);
 
   React.useEffect(() => {
     update(input.value());
   }, []);
 
   return (
-    <div className="TaskText">
-      <textarea placeholder="text" cols={33} rows={15} {...input.bind} />
+    <div className="TaskDay">
+      <textarea placeholder="day" cols={5} rows={1} {...input.bind} />
     </div>
   );
 };
 
-export default TaskText;
+export default TaskDay;

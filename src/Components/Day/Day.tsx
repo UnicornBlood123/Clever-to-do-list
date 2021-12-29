@@ -1,11 +1,16 @@
 import React from 'react';
 import './Day.css';
-import {NavLink} from "react-router-dom";
+import { NavLink } from 'react-router-dom';
 
-const Day = ({day}:{day:number}) =>  {
+const Day = ({ day }: { day: number }) => {
   return (
-      <NavLink to={'/day/'+day.toString()} className={({ isActive }) =>(isActive ? "Day Active" : "Day InActive")}><p>{day}</p></NavLink>
+    <NavLink
+      to={'/day/' + day.toString()}
+      className={({ isActive }) => (isActive ? 'Day Active' : 'Day InActive')}
+    >
+      <p>{day}</p>
+    </NavLink>
   );
-}
+};
 
 export default Day;

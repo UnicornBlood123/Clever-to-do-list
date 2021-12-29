@@ -1,3 +1,3 @@
-import {mockedApiDays} from "../mocks/mockedApi";
+import { mockedApiDays } from '../mocks/mockedApi';
 
 export const getDays = mockedApiDays;
