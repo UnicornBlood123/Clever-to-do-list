@@ -7,7 +7,7 @@ const useInput = (updateDay: any, defaultValue = '') => {
 
   return {
     bind: {
-      value,
+      value: value,
       onChange: (event: any) => {
         setValue(event.target.value);
         updateDay(event.target.value);
@@ -28,7 +28,7 @@ const TaskDay = ({ tasks, update }: any) => {
 
   return (
     <div className="TaskDay">
-      <textarea placeholder="day" cols={5} rows={1} {...input.bind} />
+      <input type="date" {...input.bind} />
     </div>
   );
 };

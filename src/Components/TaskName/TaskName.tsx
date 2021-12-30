@@ -46,7 +46,7 @@ const TaskName = ({ tasks, updateName, updateCheck }: any) => {
   return (
     <div className="TaskName">
       <input type="checkbox" {...inputCheck.bind} />
-      <textarea placeholder="name" cols={23} rows={1} {...inputName.bind} />
+      <textarea placeholder="name" cols={31} rows={1} {...inputName.bind} />
     </div>
   );
 };

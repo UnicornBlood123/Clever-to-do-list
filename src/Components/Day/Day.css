@@ -3,7 +3,7 @@
     border:1px solid black;
     border-radius: 10px;
     grid-area: top;
-    width: 60px;
+    width: 58px;
     height: 80px;
     align-items: center;
     justify-content: center;
@@ -18,5 +18,24 @@
     color: white;
     text-decoration: none;
 }
+.Circles {
+    display: flex;
+    justify-content:center;
+    gap: 10px;
+}
+.Circle {
+    margin-top: 3px;
+    border-radius: 50%;
+    height: 12px;
+    width: 12px;
+}
+.Done{
+    background-color: cornflowerblue;
+}
+.NoDone{
+    border: 1px solid black;
+}
+
+
 
 

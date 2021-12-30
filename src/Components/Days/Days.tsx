@@ -1,20 +1,16 @@
-import React, { useState } from 'react';
+import React from 'react';
 import './Days.css';
 import Day from '../Day/Day';
-import { getDays } from '../../api/loader';
+import Loader from '../Loader/Loader';
 
-const Days = () => {
-  const [data, setData] = useState<[]>([]);
-
-  React.useEffect(() => {
-    getDays().then((result) => setData(result as []));
-  }, []);
-
+const Days = ({ days }: any) => {
   return (
     <div className="Days">
-      {data?.map((el: { id: number; day: number }) => (
-        <Day key={el.id} day={el.day} />
-      ))}
+      {days.length === 0 ? (
+        <Loader />
+      ) : (
+        days?.map((el: { id: number; day: number }) => <Day key={el.id} day={el} />)
+      )}
     </div>
   );
 };
