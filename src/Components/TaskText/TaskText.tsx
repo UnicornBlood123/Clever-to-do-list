@@ -20,7 +20,7 @@ const useInputValue = (update: any, defaultValue = '') => {
 const TaskText = ({ tasks, update }: any) => {
   const params = useParams();
   const taskNumber = params?.id + '';
-  const input = useInputValue(update, tasks?.[+taskNumber - 1]?.text);
+  const input = useInputValue(update, tasks?.find((task: any) => task.id === taskNumber)?.text);
 
   React.useEffect(() => {
     update(input.value());

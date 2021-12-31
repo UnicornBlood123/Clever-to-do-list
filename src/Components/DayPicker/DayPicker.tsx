@@ -18,7 +18,9 @@ const DayPicker = ({ tasks, loading, updateName, updateCheck, updateDay }: any) 
     if (days.length > 0) {
       days.forEach((day: any, i: number) => {
         tasks?.some((task: any) => {
+          day.haveTask = 0;
           if (task.day === day.day) {
+            day.haveTask = 1;
             if (task.done) {
               day.haveDoneTask = 1;
               return true;
@@ -27,6 +29,7 @@ const DayPicker = ({ tasks, loading, updateName, updateCheck, updateDay }: any) 
         });
         tasks?.some((task: any) => {
           if (task.day === day.day) {
+            day.haveTask = 1;
             if (!task.done) {
               day.haveNoDoneTask = 1;
               return true;

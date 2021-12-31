@@ -35,8 +35,14 @@ const useInputCheck = (updateCheck: any, defaultValue = false) => {
 const TaskName = ({ tasks, updateName, updateCheck }: any) => {
   const params = useParams();
   const taskNumber = params?.id + '';
-  const inputName = useInputName(updateName, tasks?.[+taskNumber - 1]?.name);
-  const inputCheck = useInputCheck(updateCheck, tasks?.[+taskNumber - 1]?.done);
+  const inputName = useInputName(
+    updateName,
+    tasks?.find((task: any) => task.id === taskNumber)?.name
+  );
+  const inputCheck = useInputCheck(
+    updateCheck,
+    tasks?.find((task: any) => task.id === taskNumber)?.done
+  );
 
   React.useEffect(() => {
     updateCheck(inputCheck.value());

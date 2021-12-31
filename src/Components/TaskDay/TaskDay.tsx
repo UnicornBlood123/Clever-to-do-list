@@ -20,7 +20,7 @@ const useInput = (updateDay: any, defaultValue = '') => {
 const TaskDay = ({ tasks, update }: any) => {
   const params = useParams();
   const taskNumber = params?.id + '';
-  const input = useInput(update, tasks?.[+taskNumber - 1]?.day);
+  const input = useInput(update, tasks?.find((task: any) => task.id === taskNumber)?.day);
 
   React.useEffect(() => {
     update(input.value());

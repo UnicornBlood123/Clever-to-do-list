@@ -12,8 +12,8 @@ const Day = ({ day }: { day: any }) => {
         <p>{day.day.toString().slice(-2)}</p>
       </NavLink>
       <div className="Circles">
-        <div className={day.haveNoDoneTask > 0 ? 'Circle NoDone' : 'Circle'} />
-        <div className={day.haveDoneTask > 0 ? 'Circle Done' : 'Circle'} />
+        <div className={day.haveNoDoneTask > 0 && day.haveTask > 0 ? 'Circle NoDone' : 'Circle'} />
+        <div className={day.haveDoneTask > 0 && day.haveTask > 0 ? 'Circle Done' : 'Circle'} />
       </div>
     </div>
   );

@@ -13,7 +13,7 @@ const Footer = ({ tasks, addTask, update, updatedTask }: any) => {
 
   const addTaskPromise = () => {
     return new Promise((resolve) => {
-      resolve(addTask(tasks.length + 1));
+      resolve(addTask((tasks.length + 1).toString()));
     });
   };
 
@@ -22,6 +22,8 @@ const Footer = ({ tasks, addTask, update, updatedTask }: any) => {
       alert('enter name');
     } else if (updatedTask?.text.length === 0) {
       alert('enter text');
+    } else if (updatedTask?.day.length < 10) {
+      alert('enter date');
     } else {
       update(taskNumber);
     }

@@ -3,8 +3,8 @@ import './Tasks.css';
 import Task from '../Task/Task';
 import { useParams } from 'react-router-dom';
 
-const useInputValue = (defaultValue: boolean[] = []) => {
-  const [check, setCheck] = useState<boolean[]>(defaultValue);
+const useInputValue = (defaultValue: any[] = []) => {
+  const [check, setCheck] = useState<any[]>(defaultValue);
 
   return {
     bind: {

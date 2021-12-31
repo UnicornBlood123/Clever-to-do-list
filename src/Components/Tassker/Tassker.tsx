@@ -9,7 +9,7 @@ import { useCollectionData } from 'react-firebase-hooks/firestore';
 
 const Tassker = () => {
   const { firestore } = useContext<any>(Context);
-  const [tasks, setTasks] = useCollectionData(firestore.collection('tasks'));
+  const [tasks, setTasks] = useCollectionData(firestore.collection('tasks').orderBy('id', 'asc'));
   const [updatedTask, setUpdatedTask] = useState({ name: '', text: '', done: false, day: '1' });
 
   const updateText = (text: string) => {
@@ -44,8 +44,8 @@ const Tassker = () => {
         });
     }
   };
-  const updateAll = (i: number) => {
-    firestore.collection('tasks').doc(i.toString()).update({
+  const updateAll = (i: string) => {
+    firestore.collection('tasks').doc(i).update({
       text: updatedTask?.text,
       name: updatedTask?.name,
       done: updatedTask?.done,
@@ -53,8 +53,8 @@ const Tassker = () => {
     });
   };
 
-  const addTask = (i: number) => {
-    firestore.collection('tasks').doc(i.toString()).set({
+  const addTask = (i: string) => {
+    firestore.collection('tasks').doc(i).set({
       id: i,
       done: false,
       day: updatedTask?.day,
