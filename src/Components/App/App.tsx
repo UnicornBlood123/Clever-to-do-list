@@ -17,23 +17,21 @@ const App = () => {
     !setUser && !user && navigate('login');
   }, [user, navigate, setUser]);
 
-  if (setUser) {
-    return (
-      <div className="App">
+  return (
+    <div className="App">
+      {setUser ? (
         <Loader />
-      </div>
-    );
-  } else {
-    return (
-      <div className="App">
-        <Navbar />
-        <Routes>
-          <Route path={'/*'} element={<Tassker />} />
-          <Route path={'login'} element={<Login />} />
-        </Routes>
-      </div>
-    );
-  }
+      ) : (
+        <React.Fragment>
+          <Navbar />
+          <Routes>
+            <Route path={'/*'} element={<Tassker />} />
+            <Route path={'login'} element={<Login />} />
+          </Routes>
+        </React.Fragment>
+      )}
+    </div>
+  );
 };
 
 export default App;

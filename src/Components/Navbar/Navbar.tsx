@@ -7,19 +7,15 @@ const Navbar = () => {
   const { auth } = useContext<any>(Context);
   const [user] = useAuthState(auth);
 
-  if (user) {
-    return (
-      <div className="Navbar" onClick={() => auth.signOut()}>
-        <button>Exit</button>
-      </div>
-    );
-  } else {
-    return (
-      <div className="Navbar">
+  return (
+    <div className="Navbar">
+      {user ? (
+        <button onClick={() => auth.signOut()}>Exit</button>
+      ) : (
         <button disabled={true}>Login</button>
-      </div>
-    );
-  }
+      )}
+    </div>
+  );
 };
 
 export default Navbar;
