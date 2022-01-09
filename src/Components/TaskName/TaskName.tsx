@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import './TaskName.css';
 import { useParams } from 'react-router-dom';
+import { TaskNameProps } from './TaskName.interface';
 
 const useInputName = (updateName: any, defaultValue = '') => {
   const [value, setValue] = useState(defaultValue);
@@ -32,7 +33,7 @@ const useInputCheck = (updateCheck: any, defaultValue = false) => {
   };
 };
 
-const TaskName = ({ tasks, updateName, updateCheck }: any) => {
+const TaskName = ({ tasks, updateName, updateCheck }: TaskNameProps) => {
   const params = useParams();
   const taskNumber = params?.id + '';
   const inputName = useInputName(

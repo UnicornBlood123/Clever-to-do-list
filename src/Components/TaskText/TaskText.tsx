@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import './TaskText.css';
 import { useParams } from 'react-router-dom';
+import { TaskTextProps } from './TaskText.interface';
 
 const useInputValue = (update: any, defaultValue = '') => {
   const [value, setValue] = useState(defaultValue);
@@ -17,7 +18,7 @@ const useInputValue = (update: any, defaultValue = '') => {
   };
 };
 
-const TaskText = ({ tasks, update }: any) => {
+const TaskText = ({ tasks, update }: TaskTextProps) => {
   const params = useParams();
   const taskNumber = params?.id + '';
   const input = useInputValue(update, tasks?.find((task: any) => task.id === taskNumber)?.text);

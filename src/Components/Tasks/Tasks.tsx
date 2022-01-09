@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import './Tasks.css';
 import Task from '../Task/Task';
 import { useParams } from 'react-router-dom';
+import { TasksProps } from './Tasks.interface';
 
 const useInputValue = (defaultValue: any[] = []) => {
   const [check, setCheck] = useState<any[]>(defaultValue);
@@ -23,7 +24,7 @@ const useInputValue = (defaultValue: any[] = []) => {
   };
 };
 
-const Tasks = ({ tasks, currentDayTasks, update }: any) => {
+const Tasks = ({ tasks, currentDayTasks, update }: TasksProps) => {
   const paramsId = useParams().id;
   const input = useInputValue(tasks.map((task: any) => task.done));
 

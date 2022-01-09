@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import './TaskDay.css';
 import { useParams } from 'react-router-dom';
+import { TaskDayProps } from './TaskDay.interface';
 
 const useInput = (updateDay: any, defaultValue = '') => {
   const [value, setValue] = useState(defaultValue);
@@ -17,7 +18,7 @@ const useInput = (updateDay: any, defaultValue = '') => {
   };
 };
 
-const TaskDay = ({ tasks, update }: any) => {
+const TaskDay = ({ tasks, update }: TaskDayProps) => {
   const params = useParams();
   const taskNumber = params?.id + '';
   const input = useInput(update, tasks?.find((task: any) => task.id === taskNumber)?.day);

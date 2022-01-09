@@ -1,6 +1,7 @@
 import React from 'react';
 import './Header.css';
 import { Route, Routes, Navigate, useNavigate } from 'react-router-dom';
+import { Paths } from '../../contents/routes';
 
 const Header = () => {
   const navigate = useNavigate();
@@ -12,9 +13,9 @@ const Header = () => {
   return (
     <Routes>
       <Route index element={<div className="Header">Tassker</div>} />
-      <Route path="day/:id" element={<div className="Header">Tassker</div>} />
+      <Route path={Paths.DAY_ID} element={<div className="Header">Tassker</div>} />
       <Route
-        path="task/:id"
+        path={Paths.TASK_ID}
         element={
           <div>
             <div className="ButtonHeader">
@@ -28,7 +29,7 @@ const Header = () => {
           </div>
         }
       />
-      <Route path="*" element={<Navigate to={'/'} />} />
+      <Route path="*" element={<Navigate to={Paths.ROOT} />} />
     </Routes>
   );
 };

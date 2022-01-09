@@ -1,8 +1,10 @@
 import React from 'react';
 import './Footer.css';
 import { Navigate, Route, Routes, useNavigate, useParams } from 'react-router-dom';
+import { Paths } from '../../contents/routes';
+import { FooterProps } from './Footer.interfaces';
 
-const Footer = ({ tasks, addTask, update, updatedTask }: any) => {
+const Footer = ({ tasks, addTask, update, updatedTask }: FooterProps) => {
   const navigate = useNavigate();
   const params = useParams();
   const taskNumber = params['*']?.slice(5, params['*']?.length);
@@ -42,7 +44,7 @@ const Footer = ({ tasks, addTask, update, updatedTask }: any) => {
   return (
     <Routes>
       <Route
-        path="task/:id"
+        path={Paths.TASK_ID}
         element={
           <div className="Footer">
             <button onClick={saveTask}>Save</button>
@@ -50,14 +52,14 @@ const Footer = ({ tasks, addTask, update, updatedTask }: any) => {
         }
       />
       <Route
-        path="/*"
+        path={Paths.OTHER}
         element={
           <div className="Footer">
             <button onClick={newTask}>Add a new Task</button>
           </div>
         }
       />
-      <Route path="*" element={<Navigate to={'/'} />} />
+      <Route path="*" element={<Navigate to={Paths.ROOT} />} />
     </Routes>
   );
 };

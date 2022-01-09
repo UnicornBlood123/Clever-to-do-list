@@ -1,12 +1,14 @@
 import React from 'react';
 import './Day.css';
 import { NavLink } from 'react-router-dom';
+import { Paths } from '../../contents/routes';
+import { DayProps } from './Day.interfaces';
 
-const Day = ({ day }: { day: any }) => {
+const Day = ({ day }: DayProps) => {
   return (
     <div>
       <NavLink
-        to={'/day/' + day.day.toString()}
+        to={Paths.DAY + day.day.toString()}
         className={({ isActive }) => (isActive ? 'Day Active' : 'Day InActive')}
       >
         <p>{day.day.toString().slice(-2)}</p>

@@ -6,8 +6,10 @@ import Loader from '../Loader/Loader';
 import TaskDay from '../TaskDay/TaskDay';
 import Days from '../Days/Days';
 import { getDays } from '../../api/loader';
+import { Paths } from '../../contents/routes';
+import { DayPickerProps } from './DayPicker.interfaces';
 
-const DayPicker = ({ tasks, loading, updateName, updateCheck, updateDay }: any) => {
+const DayPicker = ({ tasks, loading, updateName, updateCheck, updateDay }: DayPickerProps) => {
   const [days, setDays] = useState<any>([]);
 
   React.useEffect(() => {
@@ -49,10 +51,10 @@ const DayPicker = ({ tasks, loading, updateName, updateCheck, updateDay }: any) 
         <Loader />
       ) : (
         <Routes>
-          <Route index element={<Days tasks={tasks} days={days} />} />
-          <Route path="day/:id" element={<Days tasks={tasks} days={days} />} />
+          <Route index element={<Days days={days} />} />
+          <Route path={Paths.DAY_ID} element={<Days days={days} />} />
           <Route
-            path="task/:id"
+            path={Paths.TASK_ID}
             element={
               <div className="TaskPlaces">
                 <TaskDay tasks={tasks} update={updateDay} />
@@ -60,7 +62,7 @@ const DayPicker = ({ tasks, loading, updateName, updateCheck, updateDay }: any) 
               </div>
             }
           />
-          <Route path="*" element={<Navigate to={'/'} />} />
+          <Route path="*" element={<Navigate to={Paths.ROOT} />} />
         </Routes>
       )}
     </div>

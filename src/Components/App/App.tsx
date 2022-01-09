@@ -7,6 +7,7 @@ import { Context } from '../../index';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import Loader from '../Loader/Loader';
 import Login from '../Login/Login';
+import { Paths } from '../../contents/routes';
 
 const App = () => {
   const { auth } = useContext<any>(Context);
@@ -14,7 +15,7 @@ const App = () => {
   const navigate = useNavigate();
 
   React.useEffect(() => {
-    !setUser && !user && navigate('login');
+    !setUser && !user && navigate(Paths.LOGIN);
   }, [user, navigate, setUser]);
 
   return (
@@ -25,8 +26,8 @@ const App = () => {
         <React.Fragment>
           <Navbar />
           <Routes>
-            <Route path={'/*'} element={<Tassker />} />
-            <Route path={'login'} element={<Login />} />
+            <Route path={Paths.OTHER} element={<Tassker />} />
+            <Route path={Paths.LOGIN} element={<Login />} />
           </Routes>
         </React.Fragment>
       )}

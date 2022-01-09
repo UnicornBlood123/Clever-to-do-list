@@ -4,8 +4,10 @@ import Tasks from '../Tasks/Tasks';
 import { Navigate, Route, Routes, useParams } from 'react-router-dom';
 import TaskText from '../TaskText/TaskText';
 import Loader from '../Loader/Loader';
+import { Paths } from '../../contents/routes';
+import { TaskListProps } from './TaskList.interface';
 
-const TaskList = ({ tasks, loading, updateText, updateCheck }: any) => {
+const TaskList = ({ tasks, loading, updateText, updateCheck }: TaskListProps) => {
   const params = useParams();
   const dayNumber = params['*']?.slice(4, params['*']?.length);
 
@@ -21,11 +23,11 @@ const TaskList = ({ tasks, loading, updateText, updateCheck }: any) => {
         <Routes>
           <Route index element={<div>Choose a day</div>} />
           <Route
-            path="day/:id"
+            path={Paths.DAY_ID}
             element={<Tasks tasks={tasks} currentDayTasks={currentDayTasks} update={updateCheck} />}
           />
-          <Route path="task/:id" element={<TaskText tasks={tasks} update={updateText} />} />
-          <Route path="*" element={<Navigate to={'/'} />} />
+          <Route path={Paths.TASK_ID} element={<TaskText tasks={tasks} update={updateText} />} />
+          <Route path="*" element={<Navigate to={Paths.ROOT} />} />
         </Routes>
       )}
     </div>

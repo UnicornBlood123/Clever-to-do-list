@@ -4,6 +4,7 @@ import { Context } from '../../index';
 import firebase from 'firebase/compat/app';
 import { useNavigate } from 'react-router-dom';
 import { useAuthState } from 'react-firebase-hooks/auth';
+import { Paths } from '../../contents/routes';
 
 const Login = () => {
   const { auth } = useContext<any>(Context);
@@ -11,7 +12,7 @@ const Login = () => {
   const navigate = useNavigate();
 
   React.useEffect(() => {
-    !setUser && user && navigate('/');
+    !setUser && user && navigate(Paths.ROOT);
   }, [user, navigate, setUser]);
 
   const login = async () => {
