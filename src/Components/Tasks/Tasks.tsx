@@ -33,12 +33,12 @@ const Tasks = ({ tasks, currentDayTasks, update }: TasksProps) => {
   });
 
   return (
-    <div className="Tasks">
-      <div>{currentDayTasks().length} Tasks today</div>
+    <div className="tasks">
+      <div className="amountTask">{currentDayTasks().length} Tasks today</div>
       {tasks?.map((task: any, i: number) => {
         if (task?.day === paramsId) {
           return (
-            <div key={i} className="TaskLine">
+            <div key={i} className="taskLine">
               <input type="checkbox" id={i.toString()} checked={input.value(i)} {...input.bind} />
               {<Task id={task.id} name={task.name} />}
             </div>

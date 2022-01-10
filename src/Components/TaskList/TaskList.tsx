@@ -16,12 +16,12 @@ const TaskList = ({ tasks, loading, updateText, updateCheck }: TaskListProps) =>
   };
 
   return (
-    <div className="TaskList">
+    <div className="taskList">
       {loading ? (
         <Loader />
       ) : (
         <Routes>
-          <Route index element={<div>Choose a day</div>} />
+          <Route index element={<div className="amountTask">Choose a day</div>} />
           <Route
             path={Paths.DAY_ID}
             element={<Tasks tasks={tasks} currentDayTasks={currentDayTasks} update={updateCheck} />}

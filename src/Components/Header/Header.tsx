@@ -12,18 +12,18 @@ const Header = () => {
 
   return (
     <Routes>
-      <Route index element={<div className="Header">Tassker</div>} />
-      <Route path={Paths.DAY_ID} element={<div className="Header">Tassker</div>} />
+      <Route index element={<div className="header">Tassker</div>} />
+      <Route path={Paths.DAY_ID} element={<div className="header">Tassker</div>} />
       <Route
         path={Paths.TASK_ID}
         element={
           <div>
-            <div className="ButtonHeader">
+            <div className="buttonHeader">
               <button onClick={back}>
                 <p>Back</p>
               </button>
             </div>
-            <div className="Header" style={{ marginTop: 0 }}>
+            <div className="header" style={{ marginTop: 0 }}>
               <p>Todays Task</p>
             </div>
           </div>

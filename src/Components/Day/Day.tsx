@@ -9,13 +9,13 @@ const Day = ({ day }: DayProps) => {
     <div>
       <NavLink
         to={Paths.DAY + day.day.toString()}
-        className={({ isActive }) => (isActive ? 'Day Active' : 'Day InActive')}
+        className={({ isActive }) => (isActive ? 'day active' : 'day inActive')}
       >
         <p>{day.day.toString().slice(-2)}</p>
       </NavLink>
-      <div className="Circles">
-        <div className={day.haveNoDoneTask > 0 && day.haveTask > 0 ? 'Circle NoDone' : 'Circle'} />
-        <div className={day.haveDoneTask > 0 && day.haveTask > 0 ? 'Circle Done' : 'Circle'} />
+      <div className="circles">
+        <div className={day.haveNoDoneTask > 0 && day.haveTask > 0 ? 'circle noDone' : 'circle'} />
+        <div className={day.haveDoneTask > 0 && day.haveTask > 0 ? 'circle done' : 'circle'} />
       </div>
     </div>
   );

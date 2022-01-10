@@ -28,7 +28,7 @@ const TaskDay = ({ tasks, update }: TaskDayProps) => {
   }, []);
 
   return (
-    <div className="TaskDay">
+    <div className="taskDay">
       <input type="date" {...input.bind} />
     </div>
   );

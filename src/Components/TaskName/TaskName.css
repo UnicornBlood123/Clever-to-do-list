@@ -1,4 +1,4 @@
-.TaskName{
+.taskName{
     display: flex;
     justify-items: flex-start;
     align-items: center;
@@ -7,13 +7,13 @@
     align-self: center;
 }
 
-.TaskName textarea{
+.taskName textarea{
     font-size: 24px;
     resize: none;
     outline: none;
 }
 
-.TaskName input[type="checkbox"]{
+.taskName input[type="checkbox"]{
     width:18px;
     height:18px;
     cursor:pointer;

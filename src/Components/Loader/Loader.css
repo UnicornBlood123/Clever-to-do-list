@@ -1,4 +1,4 @@
-.Loader{
+.loader{
     display: flex;
     flex-flow: row wrap;
     grid-area: content;

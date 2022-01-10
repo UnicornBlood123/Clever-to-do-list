@@ -6,7 +6,7 @@ import { DaysProps } from './Days.interfaces';
 
 const Days = ({ days }: DaysProps) => {
   return (
-    <div className="Days">
+    <div className="days">
       {days.length === 0 ? (
         <Loader />
       ) : (

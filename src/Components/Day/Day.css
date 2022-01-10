@@ -1,4 +1,4 @@
-.Day {
+.day {
     display: flex;
     border:1px solid black;
     border-radius: 10px;
@@ -8,31 +8,31 @@
     align-items: center;
     justify-content: center;
 }
-.InActive{
+.inActive{
     background-color: white;
     color: black;
     text-decoration: none;
 }
-.Active{
+.active{
     background-color: black;
     color: white;
     text-decoration: none;
 }
-.Circles {
+.circles {
     display: flex;
     justify-content:center;
     gap: 10px;
 }
-.Circle {
+.circle {
     margin-top: 3px;
     border-radius: 50%;
     height: 12px;
     width: 12px;
 }
-.Done{
+.done{
     background-color: cornflowerblue;
 }
-.NoDone{
+.noDone{
     border: 1px solid black;
 }
 

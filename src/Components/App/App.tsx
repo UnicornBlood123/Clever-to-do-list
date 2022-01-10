@@ -8,6 +8,7 @@ import { useAuthState } from 'react-firebase-hooks/auth';
 import Loader from '../Loader/Loader';
 import Login from '../Login/Login';
 import { Paths } from '../../contents/routes';
+import Registration from '../Registration/Registration';
 
 const App = () => {
   const { auth } = useContext<any>(Context);
@@ -16,10 +17,10 @@ const App = () => {
 
   React.useEffect(() => {
     !setUser && !user && navigate(Paths.LOGIN);
-  }, [user, navigate, setUser]);
+  }, [user, setUser]);
 
   return (
-    <div className="App">
+    <div className="app">
       {setUser ? (
         <Loader />
       ) : (
@@ -28,6 +29,7 @@ const App = () => {
           <Routes>
             <Route path={Paths.OTHER} element={<Tassker />} />
             <Route path={Paths.LOGIN} element={<Login />} />
+            <Route path={Paths.REGISTER} element={<Registration />} />
           </Routes>
         </React.Fragment>
       )}

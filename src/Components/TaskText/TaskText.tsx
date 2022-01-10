@@ -28,7 +28,7 @@ const TaskText = ({ tasks, update }: TaskTextProps) => {
   }, []);
 
   return (
-    <div className="TaskText">
+    <div className="taskText">
       <textarea placeholder="text" cols={33} rows={15} {...input.bind} />
     </div>
   );

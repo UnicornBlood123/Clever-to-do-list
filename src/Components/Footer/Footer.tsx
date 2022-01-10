@@ -46,7 +46,7 @@ const Footer = ({ tasks, addTask, update, updatedTask }: FooterProps) => {
       <Route
         path={Paths.TASK_ID}
         element={
-          <div className="Footer">
+          <div className="footer">
             <button onClick={saveTask}>Save</button>
           </div>
         }
@@ -54,7 +54,7 @@ const Footer = ({ tasks, addTask, update, updatedTask }: FooterProps) => {
       <Route
         path={Paths.OTHER}
         element={
-          <div className="Footer">
+          <div className="footer">
             <button onClick={newTask}>Add a new Task</button>
           </div>
         }

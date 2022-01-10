@@ -1,10 +1,10 @@
-.TaskDay{
+.taskDay{
     display: flex;
     justify-content: flex-end;
     margin-top: 15px;
 }
 
-.TaskDay textarea{
+.taskDay textarea{
     font-size: 24px;
     resize: none;
     outline: none;

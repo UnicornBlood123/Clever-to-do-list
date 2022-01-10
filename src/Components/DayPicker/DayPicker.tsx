@@ -46,7 +46,7 @@ const DayPicker = ({ tasks, loading, updateName, updateCheck, updateDay }: DayPi
   }, [updateCheck]);
 
   return (
-    <div className="DayPicker">
+    <div className="dayPicker">
       {loading && days.length === 0 ? (
         <Loader />
       ) : (
@@ -56,7 +56,7 @@ const DayPicker = ({ tasks, loading, updateName, updateCheck, updateDay }: DayPi
           <Route
             path={Paths.TASK_ID}
             element={
-              <div className="TaskPlaces">
+              <div className="taskPlaces">
                 <TaskDay tasks={tasks} update={updateDay} />
                 <TaskName tasks={tasks} updateName={updateName} updateCheck={updateCheck} />
               </div>

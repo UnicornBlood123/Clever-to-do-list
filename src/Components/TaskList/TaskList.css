@@ -1,14 +1,17 @@
-.TaskList {
+.taskList {
     grid-area: taskList;
     margin-left: 50px;
     margin-right: 50px;
     overflow-y: auto;
     margin-top: 25px;
 }
-.TaskLine{
+.taskLine{
     display: flex;
     justify-items: flex-start;
     align-items: center;
     gap: 10px;
     margin-top: 15px;
+}
+.amountTask{
+    font-weight: bold;
 }

@@ -8,7 +8,7 @@ const Navbar = () => {
   const [user] = useAuthState(auth);
 
   return (
-    <div className="Navbar">
+    <div className="navbar">
       {user ? (
         <button onClick={() => auth.signOut()}>Exit</button>
       ) : (

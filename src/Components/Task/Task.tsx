@@ -6,8 +6,8 @@ import { TaskProps } from './Task.interface';
 
 const Task = ({ name, id }: TaskProps) => {
   return (
-    <div className="Task">
-      <NavLink className="InActive" to={Paths.TASK + id}>
+    <div className="task">
+      <NavLink className="inActive" to={Paths.TASK + id}>
         <p>{name}</p>
       </NavLink>
     </div>

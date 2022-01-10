@@ -1,12 +1,12 @@
 import React, { useContext, useState } from 'react';
-import './Login.css';
+import './Registration.css';
 import { Context } from '../../index';
 import { useNavigate } from 'react-router-dom';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { Paths } from '../../contents/routes';
-import { getAuth, signInWithEmailAndPassword } from 'firebase/auth';
+import { getAuth, createUserWithEmailAndPassword } from 'firebase/auth';
 
-const Login = () => {
+const Registration = () => {
   const { auth } = useContext<any>(Context);
   const [user, setUser] = useAuthState(auth);
   const [email, setEmail] = useState('');
@@ -17,9 +17,9 @@ const Login = () => {
     !setUser && user && navigate(Paths.ROOT);
   }, [user, navigate, setUser]);
 
-  const entry = async () => {
+  const register = async () => {
     const auth = getAuth();
-    signInWithEmailAndPassword(auth, email, password)
+    createUserWithEmailAndPassword(auth, email, password)
       .then()
       .catch((error) => {
         const errorMessage = error.message;
@@ -28,7 +28,7 @@ const Login = () => {
   };
 
   return (
-    <div className="login">
+    <div className="registration">
       <p>
         <label htmlFor="email">Email:</label>
         <br />
@@ -51,10 +51,9 @@ const Login = () => {
           placeholder={password}
         />
       </p>
-      <button onClick={entry}>Sign in</button>
-      <button onClick={() => navigate(Paths.REGISTER)}>Register</button>
+      <button onClick={register}>Register</button>
     </div>
   );
 };
 
-export default Login;
+export default Registration;

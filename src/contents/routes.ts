@@ -5,5 +5,6 @@ export const Paths = Object.freeze({
   TASK_ID: 'task/:id',
   DAY: '/day/',
   DAY_ID: 'day/:id',
-  LOGIN: 'login',
+  LOGIN: '/login',
+  REGISTER: '/registration',
 });

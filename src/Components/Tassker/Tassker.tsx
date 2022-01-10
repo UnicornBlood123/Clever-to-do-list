@@ -64,7 +64,7 @@ const Tassker = () => {
   };
 
   return (
-    <div className="Tassker">
+    <div className="tassker">
       <Header />
       <DayPicker
         tasks={tasks}

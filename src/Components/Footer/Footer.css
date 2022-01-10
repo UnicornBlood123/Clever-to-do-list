@@ -1,4 +1,4 @@
-.Footer{
+.footer{
     grid-area: footer;
     display: flex;
     flex-flow: row wrap;
@@ -8,18 +8,18 @@
     justify-content: center;
     justify-items: center;
 }
-.Footer button{
+.footer button{
     font-size: 18px;
     width: 380px;
     height: 45px;
     border-radius: 10px;
     border: solid 1px rgba(0,0,0,0.33);
 }
-.Footer button:hover{
+.footer button:hover{
     cursor: pointer;
     filter: brightness(90%);
 }
-.Footer button:active{
+.footer button:active{
     filter: brightness(120%);
 }
 
