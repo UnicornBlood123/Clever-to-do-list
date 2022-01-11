@@ -52,8 +52,10 @@ const TaskName = ({ tasks, updateName, updateCheck }: TaskNameProps) => {
 
   return (
     <div className="taskName">
-      <input type="checkbox" {...inputCheck.bind} />
-      <textarea placeholder="name" cols={31} rows={1} {...inputName.bind} />
+      <input className="checkbox" type="checkbox" id="checkbox" {...inputCheck.bind} />
+      <label htmlFor="checkbox">
+        <textarea placeholder="name" cols={29} rows={1} {...inputName.bind} />
+      </label>
     </div>
   );
 };

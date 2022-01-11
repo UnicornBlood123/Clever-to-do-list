@@ -26,6 +26,7 @@ const TaskList = ({ tasks, loading, updateText, updateCheck }: TaskListProps) =>
             path={Paths.DAY_ID}
             element={<Tasks tasks={tasks} currentDayTasks={currentDayTasks} update={updateCheck} />}
           />
+          <Route path={Paths.NEW} element={<TaskText tasks={tasks} update={updateText} />} />
           <Route path={Paths.TASK_ID} element={<TaskText tasks={tasks} update={updateText} />} />
           <Route path="*" element={<Navigate to={Paths.ROOT} />} />
         </Routes>

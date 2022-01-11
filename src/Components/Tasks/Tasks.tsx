@@ -39,8 +39,15 @@ const Tasks = ({ tasks, currentDayTasks, update }: TasksProps) => {
         if (task?.day === paramsId) {
           return (
             <div key={i} className="taskLine">
-              <input type="checkbox" id={i.toString()} checked={input.value(i)} {...input.bind} />
-              {<Task id={task.id} name={task.name} />}
+              <input
+                type="checkbox"
+                name="checkbox"
+                className="checkbox"
+                id={i.toString()}
+                checked={input.value(i)}
+                {...input.bind}
+              />
+              <label htmlFor={i.toString()}> {<Task id={task.id} name={task.name} />}</label>
             </div>
           );
         } else return null;

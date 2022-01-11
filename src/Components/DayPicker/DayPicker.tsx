@@ -62,6 +62,15 @@ const DayPicker = ({ tasks, loading, updateName, updateCheck, updateDay }: DayPi
               </div>
             }
           />
+          <Route
+            path={Paths.NEW}
+            element={
+              <div className="taskPlaces">
+                <TaskDay tasks={tasks} update={updateDay} />
+                <TaskName tasks={tasks} updateName={updateName} updateCheck={updateCheck} />
+              </div>
+            }
+          />
           <Route path="*" element={<Navigate to={Paths.ROOT} />} />
         </Routes>
       )}

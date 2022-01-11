@@ -29,6 +29,21 @@ const Header = () => {
           </div>
         }
       />
+      <Route
+        path={Paths.NEW}
+        element={
+          <div>
+            <div className="buttonHeader">
+              <button onClick={back}>
+                <p>Back</p>
+              </button>
+            </div>
+            <div className="header" style={{ marginTop: 0 }}>
+              <p>New Task</p>
+            </div>
+          </div>
+        }
+      />
       <Route path="*" element={<Navigate to={Paths.ROOT} />} />
     </Routes>
   );

@@ -7,4 +7,5 @@ export const Paths = Object.freeze({
   DAY_ID: 'day/:id',
   LOGIN: '/login',
   REGISTER: '/registration',
+  NEW: '/new',
 });

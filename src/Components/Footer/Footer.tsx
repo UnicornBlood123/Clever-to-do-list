@@ -10,7 +10,7 @@ const Footer = ({ tasks, addTask, update, updatedTask }: FooterProps) => {
   const taskNumber = params['*']?.slice(5, params['*']?.length);
 
   const newTask = () => {
-    navigate('task/' + (tasks.length + 1));
+    navigate(Paths.NEW);
   };
 
   const addTaskPromise = () => {
@@ -32,12 +32,16 @@ const Footer = ({ tasks, addTask, update, updatedTask }: FooterProps) => {
   };
 
   const saveTask = () => {
-    if (taskNumber && tasks.length < +taskNumber) {
-      addTaskPromise().then(() => {
-        updateTask();
-      });
+    if (updatedTask?.name.length === 0) {
+      alert('enter name');
+    } else if (updatedTask?.text.length === 0) {
+      alert('enter text');
+    } else if (updatedTask?.day.length < 10) {
+      alert('enter date');
     } else {
-      updateTask();
+      addTaskPromise()
+        .then(update((tasks.length + 1).toString()))
+        .then(() => navigate(Paths.ROOT));
     }
   };
 
@@ -45,6 +49,14 @@ const Footer = ({ tasks, addTask, update, updatedTask }: FooterProps) => {
     <Routes>
       <Route
         path={Paths.TASK_ID}
+        element={
+          <div className="footer">
+            <button onClick={updateTask}>Update</button>
+          </div>
+        }
+      />
+      <Route
+        path={Paths.NEW}
         element={
           <div className="footer">
             <button onClick={saveTask}>Save</button>

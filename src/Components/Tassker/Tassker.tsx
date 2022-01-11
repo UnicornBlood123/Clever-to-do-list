@@ -44,6 +44,7 @@ const Tassker = () => {
         });
     }
   };
+
   const updateAll = (i: string) => {
     firestore.collection('tasks').doc(i).update({
       text: updatedTask?.text,
