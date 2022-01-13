@@ -1,6 +1,6 @@
 export interface FooterProps {
   tasks: any;
-  addTask: any;
-  update: any;
+  addTask: (i: string) => void;
+  update: (i: string) => void;
   updatedTask: any;
 }

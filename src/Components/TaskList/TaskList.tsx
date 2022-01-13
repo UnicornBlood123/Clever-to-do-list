@@ -11,7 +11,7 @@ const TaskList = ({ tasks, loading, updateText, updateCheck }: TaskListProps) =>
   const params = useParams();
   const dayNumber = params['*']?.slice(4, params['*']?.length);
 
-  const currentDayTasks = () => {
+  const currentDayTasks = (): [] => {
     return tasks?.filter((task: any) => task?.day === dayNumber);
   };
 

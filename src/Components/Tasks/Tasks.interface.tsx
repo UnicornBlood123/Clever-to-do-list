@@ -1,5 +1,5 @@
 export interface TasksProps {
   tasks: any;
-  currentDayTasks: any;
-  update: any;
+  currentDayTasks: () => [];
+  update: (done: any[], day: string) => any;
 }

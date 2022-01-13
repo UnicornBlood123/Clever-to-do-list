@@ -12,22 +12,22 @@ const Tassker = () => {
   const [tasks, setTasks] = useCollectionData(firestore.collection('tasks').orderBy('id', 'asc'));
   const [updatedTask, setUpdatedTask] = useState({ name: '', text: '', done: false, day: '1' });
 
-  const updateText = (text: string) => {
+  const updateText = (text: string): void => {
     setUpdatedTask((prev) => ({ ...prev, text: text }));
   };
-  const updateDay = (day: string) => {
+  const updateDay = (day: string): void => {
     setUpdatedTask((prev) => ({ ...prev, day: day }));
   };
 
-  const updateName = (name: string) => {
+  const updateName = (name: string): void => {
     setUpdatedTask((prev) => ({ ...prev, name: name }));
   };
 
-  const updateCheck = (done: boolean) => {
+  const updateCheck = (done: boolean): void => {
     setUpdatedTask((prev) => ({ ...prev, done: done }));
   };
 
-  const updateChecks = (done: [], day: string) => {
+  const updateChecks = (done: any[], day: string): any => {
     if (done.length) {
       return firestore
         .collection('tasks')
@@ -45,7 +45,7 @@ const Tassker = () => {
     }
   };
 
-  const updateAll = (i: string) => {
+  const updateAll = (i: string): void => {
     firestore.collection('tasks').doc(i).update({
       text: updatedTask?.text,
       name: updatedTask?.name,
@@ -54,7 +54,7 @@ const Tassker = () => {
     });
   };
 
-  const addTask = (i: string) => {
+  const addTask = (i: string): void => {
     firestore.collection('tasks').doc(i).set({
       id: i,
       done: false,
@@ -64,6 +64,7 @@ const Tassker = () => {
     });
   };
 
+  // @ts-ignore
   return (
     <div className="tassker">
       <Header />

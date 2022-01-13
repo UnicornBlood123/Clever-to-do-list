@@ -29,7 +29,7 @@ const Tasks = ({ tasks, currentDayTasks, update }: TasksProps) => {
   const input = useInputValue(tasks.map((task: any) => task.done));
 
   React.useEffect(() => {
-    update(input.values(), paramsId);
+    if (paramsId) update(input.values(), paramsId);
   });
 
   return (

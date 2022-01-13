@@ -1,3 +1,3 @@
 export interface DaysProps {
-  days: any;
+  days: [];
 }

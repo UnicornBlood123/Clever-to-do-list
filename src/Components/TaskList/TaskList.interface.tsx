@@ -1,6 +1,6 @@
 export interface TaskListProps {
   tasks: any;
   loading: boolean;
-  updateText: any;
-  updateCheck: any;
+  updateText: (text: string) => void;
+  updateCheck: (done: any[], day: string) => void;
 }

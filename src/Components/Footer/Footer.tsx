@@ -27,7 +27,7 @@ const Footer = ({ tasks, addTask, update, updatedTask }: FooterProps) => {
     } else if (updatedTask?.day.length < 10) {
       alert('enter date');
     } else {
-      update(taskNumber);
+      if (taskNumber) update(taskNumber);
     }
   };
 
@@ -40,7 +40,7 @@ const Footer = ({ tasks, addTask, update, updatedTask }: FooterProps) => {
       alert('enter date');
     } else {
       addTaskPromise()
-        .then(update((tasks.length + 1).toString()))
+        .then(() => update((tasks.length + 1).toString()))
         .then(() => navigate(Paths.ROOT));
     }
   };

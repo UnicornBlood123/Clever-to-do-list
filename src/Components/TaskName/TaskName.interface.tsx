@@ -1,5 +1,5 @@
 export interface TaskNameProps {
   tasks: any;
-  updateName: any;
-  updateCheck: any;
+  updateName: (name: string) => void;
+  updateCheck: (check: boolean) => void;
 }

@@ -1,4 +1,4 @@
 export interface TaskDayProps {
   tasks: any;
-  update: any;
+  update: (i: string) => void;
 }

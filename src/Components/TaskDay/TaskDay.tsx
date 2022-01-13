@@ -3,7 +3,7 @@ import './TaskDay.css';
 import { useParams } from 'react-router-dom';
 import { TaskDayProps } from './TaskDay.interface';
 
-const useInput = (updateDay: any, defaultValue = '') => {
+const useInput = (updateDay: (i: string) => void, defaultValue = '') => {
   const [value, setValue] = useState(defaultValue);
 
   return {

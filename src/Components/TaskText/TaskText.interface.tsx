@@ -1,4 +1,4 @@
 export interface TaskTextProps {
   tasks: any;
-  update: any;
+  update: (text: string) => void;
 }
